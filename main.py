@@ -37,8 +37,7 @@ def main() -> None:
         }
     )
 
-    submit = st.sidebar.button("Submit")
-    if submit:
+    if submit := st.sidebar.button("Submit"):
         st.write("Delayed" if model.predict(test)[0] > 0.5 else "On Time")
         st.write(f"Probability of delay: {model.predict_proba(test)[:, 1][0]:.2%}")
 
