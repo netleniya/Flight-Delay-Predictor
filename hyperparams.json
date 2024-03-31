@@ -1,1 +1,1 @@
-{"alpha": 0.00043274506501511656, "penalty": "elasticnet", "loss": "modified_huber"}
+{"alpha": 0.0002561576413127008, "penalty": "elasticnet", "loss": "modified_huber"}
