@@ -1,6 +1,6 @@
 # Flight Delay Prediction
 
-This repository contains a machine learning model and associated code for predicting flight delays. The model is trained on historical flight data and can be used to predict whether a given flight will be delayed or not, based on various features such as airline, origin and destination airports, scheduled departure time, and more. This work is an expansion of that done as part of the final project for the Statistics and Modeling course at the University of Waterloo (2023), and adds a barebones [Streamlit](https://streamlit.io) interface for interacting with the trained model. 
+This repository contains a machine learning model and associated code for predicting flight delays. The model is trained on historical flight data and can be used to predict whether a given flight will be delayed or not, based on various features such as airline, origin and destination airports, scheduled departure time, and more. This work is an expansion of that done as part of the final project for the Statistics for Data Science course at the University of Waterloo (2023), and adds a barebones [Streamlit](https://streamlit.io) interface for interacting with the trained model. 
 
 ## Features
 
@@ -25,6 +25,13 @@ Contributions are welcome! Please open an issue or submit a pull request if you 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Original project in collaboration with
+- Allen, Telicia
+- Dong, Lijie
+- Drapinski, Michal
+- Siu, Theresa
+- Yang, Wenshuai
 
 ## TODO
 - Organize the code better by distributing it into appropriate directories suited for CI/CD.
