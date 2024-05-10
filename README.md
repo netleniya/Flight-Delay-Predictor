@@ -14,8 +14,12 @@ This repository contains a machine learning model and associated code for predic
 
 1. Clone the repository: `git clone https://github.com/username/flight-delay-prediction.git`
 2. Preprocess the data: `python eda.py`
-3. Train the model: `python model.py`
-4. Run the model: `streamlit run main.py`
+3. Create model pipeline: `python model.py`
+4. Tune hyperparameters: `python optimizer.py`
+5. Train the model: `python fit_model.py`
+6. Run the model: `streamlit run main.py`
+
+NB: The Hyperparameter tuning process can be visualized via an [Optuna](https://optuna.org) dashboard by running `optuna-dashboard sqlite:///flights.db`. 
 
 
 ## Contributing
