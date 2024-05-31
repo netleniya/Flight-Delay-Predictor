@@ -2,20 +2,22 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 import streamlit as st
 from joblib import load
+from pathlib import Path
 
 
 def main() -> None:
 
     st.title("Flight delay prediction")
 
-    df: pd.DataFrame = pd.read_parquet("clean_data.parquet")
-    _, X_test, _, _ = train_test_split(
-        df.drop(columns=["delay"]), df["delay"], test_size=0.2, random_state=42
-    )
+    test_data = Path.cwd().parent.joinpath("data", "processed", "test.parquet")
+    trained_model = Path.cwd().parent.joinpath("models", "model.joblib")
+
+    df: pd.DataFrame = pd.read_parquet(test_data)
+    X_test, _ = df.drop(columns=["delay"]), df["delay"]
 
     data = X_test.sample(1)
     st.write(data)
-    model = load("model.joblib")
+    model = load(trained_model)
 
     st.sidebar.header("Hyperparameters")
 

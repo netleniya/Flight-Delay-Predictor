@@ -2,7 +2,7 @@ import json
 import optuna
 import os
 import pandas as pd
-
+from pathlib import Path
 from model import create_model
 
 from typing import Any
@@ -15,7 +15,7 @@ class Objective:
     def __init__(self, dataset: pd.DataFrame) -> None:
         self.df: pd.DataFrame = dataset
 
-    def __call__(self, trial, *args: Any, **kwds: Any) -> float | Any:
+    def __call__(self, trial, *args: Any, **kwargs: Any) -> float | Any:
         X, y = self.df.drop(columns=["delay"]), self.df["delay"]
 
         params: dict[str:Any] = {
@@ -32,10 +32,16 @@ class Objective:
 
 
 def main() -> None:
-    dataset: pd.DataFrame = pd.read_parquet("clean_data.parquet")
+    file_path = Path.cwd().joinpath("data", "processed", "train.parquet")
+    param_file = Path.cwd().joinpath("src", "hyperparameters.json")
+
+    dataset: pd.DataFrame = pd.read_parquet(file_path)
+
+    database_url = "sqlite:///flights.db"
 
     storage = optuna.storages.RDBStorage(
-        url="sqlite:///flights.db", engine_kwargs={"pool_pre_ping": True}
+        url=database_url,
+        engine_kwargs={"pool_pre_ping": True},
     )
     objective = Objective(dataset=dataset)
 
@@ -48,7 +54,6 @@ def main() -> None:
     )
 
     study.optimize(objective, n_trials=100, show_progress_bar=True, n_jobs=-1)
-    param_file = "hyperparams.json"
     if os.path.exists(param_file):
         os.remove(param_file)
 
