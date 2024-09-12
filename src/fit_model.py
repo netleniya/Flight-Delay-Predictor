@@ -8,6 +8,11 @@ from sklearn.pipeline import Pipeline
 
 
 def fit_model() -> Pipeline:
+    """Dummy summary.
+
+    Returns:
+        Pipeline: _description_
+    """
 
     train_df = Path.cwd().joinpath("data", "processed", "train.parquet")
     hyper_params = Path.cwd().joinpath("src", "hyperparameters.json")
