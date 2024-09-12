@@ -10,8 +10,11 @@ from sklearn.pipeline import Pipeline
 def fit_model() -> Pipeline:
     """Dummy summary.
 
+    Args:
+        None
+
     Returns:
-        Pipeline: _description_
+        Pipeline: Now cause a confilict here
     """
 
     train_df = Path.cwd().joinpath("data", "processed", "train.parquet")
